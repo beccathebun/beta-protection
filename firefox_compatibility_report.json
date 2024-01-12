@@ -1,0 +1,138 @@
+{
+  "compat": [],
+  "errors": [
+    {
+      "message": "\"/manifest_version\" must be <= 2",
+      "description": "Your JSON file could not be parsed.",
+      "locations": [
+        {}
+      ]
+    },
+    {
+      "message": "File is too large to parse.",
+      "description": "This file is not binary and is too large to parse. Files larger than 4MB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, or splitting very large files into smaller ones.",
+      "locations": [
+        {
+          "file": "background.js"
+        },
+        {
+          "file": "js/chunk-vendors.c42706c7.js"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "message": "content_security_policy.sandbox allows 'eval', which has strong security and performance implications.",
+      "description": "In most cases the same result can be achieved differently, therefore it is generally prohibited",
+      "locations": [
+        {
+          "file": "manifest.json"
+        }
+      ]
+    },
+    {
+      "message": "\"content_security_policy.sandbox\" allows remote code execution in manifest.json",
+      "description": "A custom content_security_policy.sandbox needs additional review.",
+      "locations": [
+        {
+          "file": "manifest.json"
+        }
+      ]
+    },
+    {
+      "message": "Unsafe assignment to innerHTML",
+      "description": "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance degradation.",
+      "locations": [
+        {
+          "file": "js/content-script.js",
+          "line": 9
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 28
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 28
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 28
+        },
+        {
+          "file": "js/connector.js",
+          "line": 9
+        },
+        {
+          "file": "js/connector.js",
+          "line": 28
+        },
+        {
+          "file": "js/connector.js",
+          "line": 28
+        },
+        {
+          "file": "js/connector.js",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "message": "The Function constructor is eval.",
+      "description": "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when at all possible.'",
+      "locations": [
+        {
+          "file": "js/content-script.js",
+          "line": 28
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 28
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 40
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 40
+        },
+        {
+          "file": "js/content-script.js",
+          "line": 48
+        },
+        {
+          "file": "js/connector.js",
+          "line": 28
+        },
+        {
+          "file": "js/connector.js",
+          "line": 28
+        },
+        {
+          "file": "js/connector.js",
+          "line": 40
+        },
+        {
+          "file": "js/connector.js",
+          "line": 40
+        },
+        {
+          "file": "js/connector.js",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "message": "Unsafe assignment to outerHTML",
+      "description": "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance degradation.",
+      "locations": [
+        {
+          "file": "js/content-script.js",
+          "line": 48
+        }
+      ]
+    }
+  ]
+}
