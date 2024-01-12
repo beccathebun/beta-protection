@@ -1,14 +1,12 @@
-import { IExtensionPreferences, IOverride, IPreferences, OperationMode } from "@/preferences";
+import { IExtensionPreferences, IOverride, OperationMode } from "@/preferences";
+import { FileSystemClient } from '@/services';
 import { generateUUID, hashCode } from "@/util";
-import { AES, enc } from "crypto-js";
-import { services } from "@silveredgold/beta-shared-components";
-import browser from 'webextension-polyfill';
+import { AES } from "crypto-js";
 import { DateTime, Duration } from "luxon";
-const { FileSystemClient } = services;
 
 export class OverrideService {
 
-    static overrideFileType = [{ accept: { 'text/json': '.betaoverride' }, description: 'Beta Protection Overrides' }];
+    static overrideFileType:FilePickerAcceptType[] = [{ accept: { 'text/json': '.betaoverride' }, description: 'Beta Protection Overrides' }];
 
     static createOverride(keyPhrase: string, allowedModes: OperationMode[], prefs: Partial<IExtensionPreferences>) {
         const overrideId = generateUUID();

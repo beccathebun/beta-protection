@@ -62,16 +62,15 @@
     </n-card>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watch, computed, toRefs, inject, onBeforeMount } from 'vue';
-import { NCard, useNotification, NButton, NAutoComplete, NTooltip, NThing, NGrid, NGi } from "naive-ui";
-import { IExtensionPreferences } from '@/preferences';
-import { updateUserPrefs, watchForChanges } from '@silveredgold/beta-shared-components';
-import { PlaceholderService } from '@/services/placeholder-service';
-import { services } from "@silveredgold/beta-shared-components";
-import type { LoadedFileHandle } from "@silveredgold/beta-shared-components/lib/services"
-import { dbg, humanFileSize } from "@/util";
 import { LocalPlaceholder } from '@/placeholders';
-import { useEventEmitter } from '@silveredgold/beta-shared-components';
+import { IExtensionPreferences } from '@/preferences';
+import { FileSystemClient } from '@/services';
+import { PlaceholderService } from '@/services/placeholder-service';
+import { dbg, humanFileSize } from "@/util";
+import { services, updateUserPrefs, useEventEmitter, watchForChanges } from '@silveredgold/beta-shared-components';
+import type { LoadedFileHandle } from "@silveredgold/beta-shared-components/lib/services";
+import { NAutoComplete, NButton, NCard, NGi, NGrid, NThing, NTooltip, useNotification } from "naive-ui";
+import { Ref, computed, inject, onBeforeMount, ref, toRefs, watch } from 'vue';
 
 const props = defineProps<{
     preferences: IExtensionPreferences
@@ -108,7 +107,7 @@ const enabled = computed({
 });
 
 const openDir = async () => {
-    const fs = new services.FileSystemClient();
+    const fs = new FileSystemClient();
     const result = await fs.getFiles((file) => file.type.startsWith("image/"));
     dbg('loaded files', result);
     newFiles.value = result.files;

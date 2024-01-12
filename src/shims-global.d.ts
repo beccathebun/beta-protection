@@ -1,2 +1,2 @@
-declare var __DEBUG__: boolean;
-declare var __REPO_URL__: string;
+declare let __DEBUG__: boolean;
+declare let __REPO_URL__: string;

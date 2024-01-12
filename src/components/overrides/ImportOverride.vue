@@ -24,13 +24,12 @@
 </template>
 <script setup lang="ts">
 import { IExtensionPreferences, IOverride } from '@/preferences';
-import { useNotification, NCard, NSpace, NButton, NText, NThing} from "naive-ui";
-import { Ref, ref, Suspense } from 'vue';
-import CreateOverride from "./CreateOverride.vue";
+import { FileSystemClient } from '@/services';
 import { overrideFileType, useOverrideStore } from '@/stores';
 import { dbg } from '@/util';
-import { services } from "@silveredgold/beta-shared-components";
-const { FileSystemClient } = services;
+import { NButton, NCard, NSpace, NText, NThing, useNotification } from "naive-ui";
+import { Ref, Suspense, ref } from 'vue';
+import CreateOverride from "./CreateOverride.vue";
 
 const store = useOverrideStore();
 const notif = useNotification();

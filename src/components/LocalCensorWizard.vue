@@ -109,20 +109,21 @@
 
 <script setup lang="ts">
 
-import type { IPreferences } from '@/preferences';
-import { NList, NListItem, NCard, NGrid, NGridItem, NSpace, NButton, NDropdown, NSteps, NStep, NThing, NPopconfirm, NAlert, NText, NSpin, NIcon, NIconWrapper, NDataTable, DataTableColumns } from "naive-ui";
-import { computed, ComputedRef, h, reactive, Ref, ref, toRefs, onBeforeMount } from 'vue';
-import { CensoringPreferences, FileImportList, services, useBackendTransport, FileList, RequestQueue } from "@silveredgold/beta-shared-components";
-import { useUserOptionsStore } from '@/stores'
 import { LockedOption } from "@/components/overrides";
-import type { DirectoryFile, DirectoryFileList } from '@silveredgold/beta-shared-components/lib/services';
-import type { IFileEntry } from '@silveredgold/beta-shared-components/lib/components';
-import { ICensorBackend, ImageCensorResponse } from '@silveredgold/beta-shared/transport';
-import { DropdownMixedOption } from 'naive-ui/lib/dropdown/src/interface';
-import clone from 'just-clone';
-import { dbgLog } from '@/util';
-import { storeToRefs } from 'pinia';
+import type { IPreferences } from '@/preferences';
+import { useUserOptionsStore } from '@/stores';
 import { useOverrideStore } from '@/stores/overrides';
+import { dbgLog } from '@/util';
+import { CensoringPreferences, FileList, RequestQueue, services, useBackendTransport } from "@silveredgold/beta-shared-components";
+import type { IFileEntry } from '@silveredgold/beta-shared-components/lib/components';
+import type { DirectoryFile, DirectoryFileList } from '@silveredgold/beta-shared-components/lib/services';
+import { ICensorBackend, ImageCensorResponse } from '@silveredgold/beta-shared/transport';
+import clone from 'just-clone';
+import { NAlert, NButton, NCard, NDropdown, NGrid, NGridItem, NPopconfirm, NSpace, NStep, NSteps, NText } from "naive-ui";
+import { DropdownMixedOption } from 'naive-ui/lib/dropdown/src/interface';
+import { storeToRefs } from 'pinia';
+import { ComputedRef, Ref, computed, onBeforeMount, ref, toRefs } from 'vue';
+import FileImportList from './FileImportList.vue';
 const { BatchCensorService } = services;
 
 const props = defineProps<{

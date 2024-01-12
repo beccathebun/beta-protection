@@ -134,33 +134,33 @@
 </template>
 
 <script setup lang="ts">
-import { darkTheme, NConfigProvider, NMessageProvider, NDialogProvider, NGlobalStyle, NNotificationProvider, NButton, NIcon, NAvatar, NPageHeader, NCollapse, NCollapseItem, NSpace, useOsTheme, NPopover, NAlert } from "naive-ui";
-import { InformationCircleOutline, InformationCircle, StatsChart, LockOpen, Images } from "@vicons/ionicons5";
 import BackendHost from '@/components/BackendHost.vue';
-import { provide, reactive, Ref, ref, onBeforeMount, computed, watch, Suspense } from 'vue';
-import { IExtensionPreferences, IPreferences } from '@/preferences';
-import { updateUserPrefs, userPrefs } from "@silveredgold/beta-shared-components";
-import { themeOverrides, dbgLog } from "@/util";
-import { PlaceholderUpload, BetaSafetyImport, PlaceholderOptions } from "@/components/placeholders";
-import { loadPreferencesStore, usePreferencesStore, useUserOptionsStore } from "@/stores";
-import StickerOptions from "@/components/StickerOptions.vue";
-import SettingsReset from "@/components/SettingsReset.vue";
 import DomainListOptions from "@/components/DomainListOptions.vue";
-import HardcoreOptions from "@/components/HardcoreOptions.vue";
-import SubliminalOptions from "@/components/SubliminalOptions.vue";
-import PrivacyOptions from "@/components/PrivacyOptions.vue";
-import LoadingFilterOptions from "@/components/LoadingFilterOptions.vue";
-import OpenStore from "@/components/placeholders/OpenStore.vue";
 import ExtensionInfo from "@/components/ExtensionInfo.vue";
+import HardcoreOptions from "@/components/HardcoreOptions.vue";
+import LoadingFilterOptions from "@/components/LoadingFilterOptions.vue";
+import PrivacyOptions from "@/components/PrivacyOptions.vue";
+import SettingsReset from "@/components/SettingsReset.vue";
+import StickerOptions from "@/components/StickerOptions.vue";
+import SubliminalOptions from "@/components/SubliminalOptions.vue";
 import VideoOptions from "@/components/VideoOptions.vue";
+import { BetaSafetyImport, PlaceholderOptions, PlaceholderUpload } from "@/components/placeholders";
+import OpenStore from "@/components/placeholders/OpenStore.vue";
+import { IExtensionPreferences, IPreferences } from '@/preferences';
+import { loadPreferencesStore, useUserOptionsStore } from "@/stores";
+import { dbgLog, themeOverrides } from "@/util";
+import { updateUserPrefs } from "@silveredgold/beta-shared-components";
+import { Images, InformationCircle, InformationCircleOutline, LockOpen, StatsChart } from "@vicons/ionicons5";
+import { NAlert, NAvatar, NButton, NCollapse, NCollapseItem, NConfigProvider, NDialogProvider, NGlobalStyle, NIcon, NMessageProvider, NNotificationProvider, NPageHeader, NPopover, NSpace, darkTheme, useOsTheme } from "naive-ui";
+import { Suspense, computed, onBeforeMount, provide } from 'vue';
 // import CensoringPreferences from "@/components/CensoringPreferences.vue";
-import { webExtensionNavigation } from "@/components/util";
-import browser from 'webextension-polyfill';
+import ImportExport from '@/components/ImportExport.vue';
 import { OverridableOption } from "@/components/overrides";
-import { OverrideService } from "@/services/override-service";
-import { ImportExport, ConnectionStatus, ErrorOptions, CensoringPreferences } from "@silveredgold/beta-shared-components";
-import type { HostConfigurator } from '@silveredgold/beta-shared-components'
+import { webExtensionNavigation } from "@/components/util";
 import { useOverrideStore } from "@/stores/overrides";
+import type { HostConfigurator } from '@silveredgold/beta-shared-components';
+import { CensoringPreferences, ConnectionStatus, ErrorOptions } from "@silveredgold/beta-shared-components";
+import browser from 'webextension-polyfill';
 const { openOverrides, openStatistics, openCensoring } = webExtensionNavigation;
 
 const getHost: HostConfigurator = {

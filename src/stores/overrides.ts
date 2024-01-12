@@ -1,14 +1,11 @@
+import { IExtensionPreferences, IOverride } from "@/preferences";
+import { FileSystemClient } from "@/services";
 import { dbgLog, hashCode } from "@/util";
-import clone from "just-clone";
-import { defineStore, Pinia } from "pinia";
-import { toRaw, unref } from "vue";
-import browser from 'webextension-polyfill';
-import { IExtensionPreferences, IOverride, IPreferences, OperationMode } from "@/preferences";
-import { services } from "@silveredgold/beta-shared-components";
-import { DateTime, Duration } from "luxon";
 import { AES, enc } from "crypto-js";
+import { DateTime, Duration } from "luxon";
+import { Pinia, defineStore } from "pinia";
+import browser from 'webextension-polyfill';
 import { usePreferencesStore } from "./preferences";
-const { FileSystemClient } = services;
 
 export type OverrideResult = {
   success: boolean,
@@ -145,4 +142,4 @@ const loadOverrides = async () => {
   return store;
 }
 
-export const overrideFileType = [{ accept: { 'text/json': '.betaoverride' }, description: 'Beta Protection Overrides' }];
+export const overrideFileType:FilePickerAcceptType[] = [{ accept: { 'text/json': '.betaoverride' }, description: 'Beta Protection Overrides' }];

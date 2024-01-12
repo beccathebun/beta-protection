@@ -39,15 +39,15 @@
     </n-card>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watch, computed, toRefs, inject } from 'vue';
-import { NCard, useNotification, NButton, NTooltip, NThing, NTree, TreeOption } from "naive-ui";
-import { IPreferences } from '@/preferences';
-import { updateUserPrefs, watchForChanges } from '@silveredgold/beta-shared-components';
-import { PlaceholderService } from '@/services/placeholder-service';
-import { services } from "@silveredgold/beta-shared-components";
-import type { LoadedFileHandle } from "@silveredgold/beta-shared-components/lib/services"
-import { dbg, humanFileSize } from "@/util";
 import { eventEmitter } from "@/messaging";
+import { IPreferences } from '@/preferences';
+import { FileSystemClient } from '@/services';
+import { PlaceholderService } from '@/services/placeholder-service';
+import { dbg, humanFileSize } from "@/util";
+import { updateUserPrefs, watchForChanges } from '@silveredgold/beta-shared-components';
+import type { LoadedFileHandle } from "@silveredgold/beta-shared-components/lib/services";
+import { NButton, NCard, NThing, NTooltip, NTree, TreeOption, useNotification } from "naive-ui";
+import { Ref, computed, inject, ref, toRefs, watch } from 'vue';
 
 const props = defineProps<{
     preferences: IPreferences
@@ -81,7 +81,7 @@ const importMsg = computed(() => `Importing ${newFiles.value.flatMap(h => h.file
 const uniqueCategories = computed(() => [...new Set(newFiles.value.map(f => f.name))]);
 
 const openDir = async () => {
-    const fs = new services.FileSystemClient();
+    const fs = new FileSystemClient();
     const result = await fs.getDirectoriesandFiles((file) => file.type.startsWith("image/"));
     dbg('loaded files', result);
     const results = Object.keys(result.files).map(k => {

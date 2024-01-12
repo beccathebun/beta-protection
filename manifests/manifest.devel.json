@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "homepage_url": "https://github.com/silveredgold/beta-protection/",
+  "description": "A Firefox addon companion to Beta Censoring (or Beta Safety), censoring NSFW images as you view them.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4D1HzvAKcUV9/kNSMVxQbOgb/tjR9Ev3AAPp6uMDG53IhjRcs95u1o1iVVcbBWauq+dMcTC91C+b/b1RwdFcwe7BZ/Y+HT7F3sa1hx3EmbeSg64fKP6gyNzkqgADiT+0Gv0EIBzP1TkDYdjA0vgJyud4jrG0IJHU3pAJSv44W9hHtkzDk3jUsq1MEEm/yMnwdZulKOL8vMmOMyAMa5eQi8VNeepsDvi6ofwRIv6dPT0igu0K5T9UWOLj9A448upa4uR8SoyRHaSNhhqfKeKIAdFIaiqK30uoBZwX+u9FLREFVBhSWYrJZcIlOGVvj6/3flg1XjeXmiJ3QHB03nn1QwIDAQAB",
+  "web_accessible_resources": [{
+    "resources": ["images/*", "*.js", "*.json", "*.jpg", "*.png", "*.gif", "*.mp4", "*.wasm"],
+    "matches": ["<all_urls>"]
+  }],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "beta@protection-devel",
+      "strict_min_version": "110.0"
+    }
+  },
+  "default_locale": "en",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "scripting",
+    "notifications",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://*/*",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "scripts":["background.js"]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "__MSG_extName__",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true,
+    "open_in_tab": true
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' data: ws: http: https:",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+  },
+  "content_scripts": [{
+    "run_at": "document_start",
+    "matches": ["<all_urls>"],
+    "all_frames": false,
+    "js": ["js/content-script.js", "js/connector.js"],
+    "css": ["css/base.css"]
+  }],
+  "sandbox": {
+    "pages": ["ai-runtime.html"]
+  }
+}

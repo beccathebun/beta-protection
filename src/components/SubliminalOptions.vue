@@ -57,13 +57,13 @@
     </n-card>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watch, computed, toRefs, inject, onBeforeMount } from 'vue';
-import { NCard, NThing, NSpace, NCheckbox, useNotification, NInputGroup, NInputGroupLabel, NInputNumber, NButton, NTooltip } from "naive-ui";
 import type { IExtensionPreferences } from '@/preferences';
-import { updateUserPrefs, HelpTooltip, watchForChanges } from '@silveredgold/beta-shared-components';
+import { FileSystemClient } from '@/services';
 import { SubliminalService } from '@/services/subliminal-service';
-import { services } from "@silveredgold/beta-shared-components";
 import { dbg } from '@/util';
+import { HelpTooltip, updateUserPrefs, watchForChanges } from '@silveredgold/beta-shared-components';
+import { NButton, NCard, NCheckbox, NInputGroup, NInputGroupLabel, NInputNumber, NSpace, NThing, NTooltip, useNotification } from "naive-ui";
+import { Ref, computed, inject, onBeforeMount, ref, toRefs, watch } from 'vue';
 
 interface Props {
     preferences?: IExtensionPreferences,
@@ -85,6 +85,7 @@ const messageCount = computed(() => messages.value.length);
 
 const svc = new SubliminalService();
 
+//@ts-expect-error
 watch(prefs!, watchForChanges(true, updatePrefs), {deep: true});
 
 onBeforeMount(() => {
@@ -116,7 +117,7 @@ const openMessageFile = async () => {
 }
 
 const openFile = async () => {
-    const fs = new services.FileSystemClient();
+    const fs = new FileSystemClient();
     const result = await fs.getFile(fs.textFiles);
     dbg('loaded files', result);
     return result;

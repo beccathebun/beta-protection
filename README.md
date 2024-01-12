@@ -27,8 +27,13 @@ A `betaprotection.zip` file should be in the repo root folder. Now you should be
 
 No clue how you'd work on it live on firefox i'm sure you can but not like this at least i don't think. I would probably just develop on chrome with the base repo and copy over the manifest from here once done
 
+### What works?
+
+* basically everything that isn't below in known issues; image censoring, everything with options, import/export of options, etc.
+
 ### Known issues
 
 * video blurring seems to be not working and can't be bothered to find out why at this time
 * stickers may only load when in custom directories (won't show with .betapkg) - could be (and most likely is) my backend though
+* local censoring doesn't work likely due to File System Access API stuff. I've implemented some of it through polyfill library but i've probably missed tonnes that isn't supported natively.
 
