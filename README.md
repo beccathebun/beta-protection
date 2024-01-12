@@ -13,7 +13,7 @@ A Firefox addon that integrates a censoring backend into your browser (like Beta
 5. Click on the addon, go to permissions tab
 6. Make sure `Access your data for all web sites` is toggled on (as shown below)
 
-![image of addon page](.assets/addon_page.png)
+![image of addon page](.assets/addon_page_example.png)
 
 
 ### Build Instructions
