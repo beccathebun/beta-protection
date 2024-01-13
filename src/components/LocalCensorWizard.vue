@@ -229,6 +229,7 @@ const saveCensored = async (replaceOriginal: boolean) => {
         const [id, value] = input;
         return {id, file: {handle: value.handle, url: value.url}}});
     inputClean.value = !replaceOriginal;
+    //TODO: check BatchCensorService source and figure out why stuff isn't happening (probably uses wrong FileAccess Api)
     await batchService.saveCensored(results, inputHandle.value!, replaceOriginal ? undefined : 'censored', replaceOriginal ? '' : 'beta_');
 }
 

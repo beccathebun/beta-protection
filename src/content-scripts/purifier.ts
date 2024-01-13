@@ -1,12 +1,11 @@
-import { dbg, dbgLog, dbgTime, dbgTimeEnd, getDomain, hashCode, isGif, isValidUrl } from "@/util";
-import { CensoringState, ImageStyleElement, VideoCensoringOptions } from "./types";
-import { generateUUID, getRandom } from "@/util";
-import { debounce } from "throttle-debounce";
 import { LocalPlaceholder } from "@/placeholders";
 import { PlaceholderService } from "@/services/placeholder-service";
+import { dbg, dbgLog, dbgTime, dbgTimeEnd, generateUUID, getDomain, getRandom, isGif, isValidUrl } from "@/util";
+import { MD5, enc } from "crypto-js";
+import { debounce } from "throttle-debounce";
 import browser from 'webextension-polyfill';
 import { ImageTracker } from "./image-tracker";
-import { MD5, enc } from "crypto-js";
+import { CensoringState, ImageStyleElement, VideoCensoringOptions } from "./types";
 
 //we should really preference using [censor-state]="censoring" over this.
 const _imagePlaceholderClass: string = 'placeholder-frame'
@@ -446,6 +445,7 @@ export class Purifier {
         }
     }
 
+    //TODO: something wrong below here? why vidya not working hmmmmm
     private discoverVideos = (tagNames: string[]) => {
         const allEls = tagNames.map(tn => document.getElementsByTagName(tn)).flatMap(a => [...a]);
         return allEls;
